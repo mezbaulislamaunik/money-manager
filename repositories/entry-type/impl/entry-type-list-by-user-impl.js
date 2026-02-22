@@ -1,10 +1,10 @@
-const ExpenseType = require('../../../schemas/expense-type');
+const EntryType = require('../../../schemas/entry-type');
 const SessionContextService = require('../../../services/session-context-service')
 
-class ExpenseTypeListByUserImpl {
-    static async findExpenseTypeListByUser() {
+class EntryTypeListByUserImpl {
+    static async findEntryTypesByUser() {
         try {
-            return await ExpenseType
+            return await EntryType
                 .find(
                     {
                         user_id: SessionContextService.getUserId(),
@@ -19,4 +19,4 @@ class ExpenseTypeListByUserImpl {
     }
 }
 
-module.exports = ExpenseTypeListByUserImpl;
+module.exports = EntryTypeListByUserImpl;

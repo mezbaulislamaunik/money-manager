@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const expenseTypeController = require('../controllers/expense-type-controller');
+const entryTypeController = require('../controllers/entry-type-controller');
 
 /**
  * @swagger
- * /expense-type/manage:
+ * /entry-type/manage:
  *   post:
- *     summary: Create expense type
- *     tags: [expense-type-controller]
+ *     summary: Create entry type
+ *     tags: [entry-type-controller]
  *     operationId: expenseTypes
  *     requestBody:
  *         required: true
@@ -16,18 +16,18 @@ const expenseTypeController = require('../controllers/expense-type-controller');
  *             schema:
  *               type: object
  *               properties:
- *                 id:
+ *                 _id:
  *                   type: string
- *                   example: string
- *                 user_id:
- *                   type: string
- *                   example: string
+ *                   example: "string"
  *                 name:
  *                   type: string
  *                   example: "Food"
+ *                 isExpense:
+ *                  type: boolean
+ *                  example: true
  *     responses:
  *       200:
- *         description: Expense type created successfully
+ *         description: Entry type created successfully
  *         content:
  *             application/json:
  *                  schema:
@@ -52,14 +52,14 @@ const expenseTypeController = require('../controllers/expense-type-controller');
  *                  schema:
  *                      $ref: "#/components/schemas/ErrorResponse500"
  */
-router.post('/manage', expenseTypeController.manageExpenseType);
+router.post('/manage', entryTypeController.manageEntryType);
 
 /**
  * @swagger
- * /expense-type/list:
+ * /entry-type/list:
  *   get:
  *     summary: Get expense types
- *     tags: [expense-type-controller]
+ *     tags: [entry-type-controller]
  *     operationId: expenseType_list
  *     responses:
  *       200:
@@ -88,5 +88,5 @@ router.post('/manage', expenseTypeController.manageExpenseType);
  *                  schema:
  *                      $ref: "#/components/schemas/ErrorResponse500"
  */
-router.get('/list', expenseTypeController.getExpenseTypesByUserId);
+router.get('/list', entryTypeController.getEntryTypesByUserId);
 module.exports = router;

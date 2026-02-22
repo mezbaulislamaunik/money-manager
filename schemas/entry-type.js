@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const expenseTypeSchema = new Schema({
+const entryTypeSchema = new Schema({
     user_id: {
         type: Schema.Types.ObjectId,
         ref: 'User',
@@ -13,15 +13,11 @@ const expenseTypeSchema = new Schema({
         required: true,
         index: true,
         lowercase: true
+    },
+    isExpense: {
+        type: Boolean,
+        default: true
     }
 });
 
-expenseTypeSchema.statics.prepareExpenseType = function (params) {
-    return new this({
-        _id: params._id,
-        user_id: params.user_id,
-        name: params.name
-    });
-}
-
-module.exports = mongoose.model('ExpenseType', expenseTypeSchema);
+module.exports = mongoose.model('EntryType', entryTypeSchema);
