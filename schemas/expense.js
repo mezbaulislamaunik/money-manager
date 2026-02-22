@@ -18,31 +18,12 @@ const expenseSchema = new Schema({
         type: Number,
         required: true
     },
-    account: {
-        type: String,
-        required: true,
-        index: true,
-        lowercase: true
-    },
     note: {
-        type: String
-    },
-    description: {
         type: String
     },
     date: {
         type: String,
         required: true
-    },
-    time: {
-        type: String,
-        required: true
-    },
-    transaction_type: {
-        type: String,
-        required: true,
-        index: true,
-        lowercase: true
     }
 });
 
@@ -51,10 +32,8 @@ expenseSchema.statics.prepareExpense = function (params) {
         user_id: params.user_id,
         category: params.category,
         amount: params.amount,
-        account: params.account,
         note: params.note,
-        date: params.date.split(' ')[0],
-        time: params.date.split(' ')[1]
+        date: params.date,
     });
 }
 

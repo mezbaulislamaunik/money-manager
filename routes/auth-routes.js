@@ -146,4 +146,113 @@ router.post('/verify-otp', authController.verifyOtp);
  */
 router.post('/get-token', authController.getToken);
 
+/**
+ * @swagger
+ * /auth/sign-up:
+ *   post:
+ *     summary: Sign up
+ *     tags: [auth-controller]
+ *     operationId: sign up
+ *     requestBody:
+ *         required: true
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 email:
+ *                   type: string
+ *                   example: "aunikislam172@gmail.com"
+ *                 password:
+ *                   type: string
+ *                   example: "myStrongPassword123"
+ *     responses:
+ *       200:
+ *         description: User created
+ *         content:
+ *             application/json:
+ *                  schema:
+ *                      type: string
+ *                      format: binary
+ *       400:
+ *         description: Bad Request
+ *         content:
+ *             application/json:
+ *                  schema:
+ *                      $ref: "#/components/schemas/ErrorResponse400"
+ *       401:
+ *         description: Unauthorized
+ *         content:
+ *             application/json:
+ *                  schema:
+ *                      $ref: "#/components/schemas/ErrorResponse401"
+ *       500:
+ *         description: Internal Server Error
+ *         content:
+ *             application/json:
+ *                  schema:
+ *                      $ref: "#/components/schemas/ErrorResponse500"
+ */
+router.post('/sign-up', authController.signup);
+
+/**
+ * @swagger
+ * /auth/login:
+ *   post:
+ *     summary: Login
+ *     tags: [auth-controller]
+ *     operationId: login
+ *     requestBody:
+ *         required: true
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 email:
+ *                   type: string
+ *                   example: "aunikislam172@gmail.com"
+ *                 password:
+ *                   type: string
+ *                   example: "myStrongPassword123"
+ *     responses:
+ *       200:
+ *         description: User logged in
+ *         content:
+ *             application/json:
+ *                  schema:
+ *                      type: object
+ *                      properties:
+ *                          access_token:
+ *                              type: string
+ *                          refresh_token:
+ *                              type: string
+ *                          user:
+ *                              type: object
+ *                              properties:
+ *                                  _id:
+ *                                      type: string
+ *                                  email:
+ *                                      type: string
+ *       400:
+ *         description: Bad Request
+ *         content:
+ *             application/json:
+ *                  schema:
+ *                      $ref: "#/components/schemas/ErrorResponse400"
+ *       401:
+ *         description: Unauthorized
+ *         content:
+ *             application/json:
+ *                  schema:
+ *                      $ref: "#/components/schemas/ErrorResponse401"
+ *       500:
+ *         description: Internal Server Error
+ *         content:
+ *             application/json:
+ *                  schema:
+ *                      $ref: "#/components/schemas/ErrorResponse500"
+ */
+router.post('/login', authController.login);
+
 module.exports = router;

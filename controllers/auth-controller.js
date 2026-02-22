@@ -1,6 +1,6 @@
 const UserOtpImpl = require('../repositories/auth/impl/user-otp-impl');
 const UserEmailImpl = require('../repositories/auth/impl/user-email-impl');
-const UserTokenImpl = require('../repositories/auth/impl/user-token-impl');
+const UserSignUpImpl = require('../repositories/auth/impl/user-signup-impl');
 const ApiResponse = require("../models/api-response");
 const User = require('../schemas/user');
 
@@ -35,7 +35,7 @@ exports.verifyOtp = async (req, res) => {
 }
 
 exports.getToken = async (req, res) => {
-    const token = await UserTokenImpl.getToken(req.body.email);
+    const token = await UserSignUpImpl.getToken(req.body.email);
     return res.status(200).json(new ApiResponse.Success({
         access_token: token.access_token,
         refresh_token: token.refresh_token,
@@ -44,8 +44,29 @@ exports.getToken = async (req, res) => {
 
 exports.login = async (req, res) => {
     try {
-
+        const response = await UserSignUpImpl
+            .login(req.body.email, req.body.password);
+        return res.status(200).json(new ApiResponse.Success({
+            access_token: response.access_token,
+            refresh_token: response.refresh_token,
+            user: {_id: response.user._id, email: response.user.email},
+        }));
     } catch (error) {
-
+        return res.status(401).json(new ApiResponse.Error([error.message], 401));
     }
+}
+
+exports.signup = async (req, res) => {
+    try {
+        const response = await UserSignUpImpl
+            .register(req.body.email, req.body.password);
+        return res.status(200).json(new ApiResponse.Success({
+            access_token: response.access_token,
+            refresh_token: response.refresh_token,
+            user: {_id: response.user._id, email: response.user.email},
+        }));
+    } catch (error) {
+        return res.status(401).json(new ApiResponse.Error([error.message], 401));
+    }
+
 }
