@@ -1,4 +1,4 @@
-const EntryType = require('../../../schemas/entry-type');
+const EntryType = require('../../../models/entry-type-model');
 const mongoose = require('mongoose');
 const SessionContextService = require('../../../services/session-context-service')
 

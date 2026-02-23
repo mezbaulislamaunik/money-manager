@@ -19,5 +19,4 @@ const entryTypeSchema = new Schema({
         default: true
     }
 });
-
-module.exports = mongoose.model('EntryType', entryTypeSchema);
+module.exports = entryTypeSchema;
