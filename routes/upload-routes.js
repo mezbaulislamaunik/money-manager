@@ -5,10 +5,10 @@ const ExpenseUploadIml = require('../repositories/upload/impl/expense-upload-imp
 
 /**
  * @swagger
- * /upload/expense:
+ * /upload/entry:
  *   post:
- *     summary: Submit expense excel file
- *     tags: [expense-controller]
+ *     summary: Submit entry excel file
+ *     tags: [entry-controller]
  *     operationId: expense_upload
  *     requestBody:
  *         required: true
