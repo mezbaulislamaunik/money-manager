@@ -1,14 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const expenseController = require('../controllers/expense-controller');
+const entryController = require('../controllers/entry-controller');
 
 /**
  * @swagger
- * /expense/create:
+ * /entry/create:
  *   post:
- *     summary: Create expense
- *     tags: [expense-controller]
- *     operationId: expenses
+ *     summary: Create entry
+ *     tags: [entry-controller]
+ *     operationId: entry
  *     requestBody:
  *         required: true
  *         content:
@@ -16,24 +16,27 @@ const expenseController = require('../controllers/expense-controller');
  *             schema:
  *               type: object
  *               properties:
- *                 category:
- *                   type: string
- *                   example: "Food"
- *                 amount:
- *                   type: number
- *                   example: 100
- *                 account:
- *                   type: string
- *                   example: "Cash"
- *                 note:
- *                    type: string
- *                    example: "Ice cream"
- *                 description:
- *                    type: string
- *                    example: "Brought from Hena med market"
- *                 date:
- *                    type: string
- *                    example: "2025-10-20T18:30:00Z"
+ *                  type:
+ *                      type: object
+ *                      properties:
+ *                          _id:
+ *                              type: string
+ *                              example: string
+ *                          name:
+ *                              type: string
+ *                              example: "Food"
+ *                  amount:
+ *                      type: number
+ *                      example: 100
+ *                  note:
+ *                      type: string
+ *                      example: "Ice cream"
+ *                  description:
+ *                      type: string
+ *                      example: "Brought from Hena med market"
+ *                  date:
+ *                      type: string
+ *                      example: "2026-02-20T18:30:00Z"
  *     responses:
  *       200:
  *         description: Expense created successfully
@@ -61,5 +64,5 @@ const expenseController = require('../controllers/expense-controller');
  *                  schema:
  *                      $ref: "#/components/schemas/ErrorResponse500"
  */
-router.post('/create', expenseController.createExpense);
+router.post('/create', entryController.createEntry);
 module.exports = router;
