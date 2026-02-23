@@ -1,14 +1,14 @@
 // const {Worker} = require('bullmq');
 // const IORedis = require('ioredis');
 // const ExcelJs = require('exceljs');
-// const Expense = require('../schemas/expense');
-// const ExpenseErrorEntry = require('../schemas/expense-upload');
-// const ExpenseUploadImpl = require('../repositories/upload/impl/expense-upload-impl')
+// const Expense = require('../schemas/entry');
+// const ExpenseErrorEntry = require('../schemas/entry-upload');
+// const ExpenseUploadImpl = require('../repositories/upload/impl/entry-upload-impl')
 // const fs = require('fs');
 // const utilFunctions = require('../utils/util-functions')
 // const path = require("path");
 // const rootDir = require("../utils/path");
-// const AttachmentEmailImpl = require('../repositories/expense/impl/attachment-email-impl');
+// const AttachmentEmailImpl = require('../repositories/entry/impl/attachment-email-impl');
 // const dbConnection = require('../utils/database-connection');
 // const redisConnection = require('../config/redis-config');
 //

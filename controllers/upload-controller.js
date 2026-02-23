@@ -10,7 +10,7 @@ exports.uploadExpenseExcel = async function(req, res) {
     try {
         console.log(`Request received`)
         await ExcelQueue.excelQueue.add(
-            'parse-expense', // add job 'parse-expense' to the queue
+            'parse-entry', // add job 'parse-entry' to the queue
             {
                 filePath: req.file.path,
                 userId: SessionContextService.getUserId()
