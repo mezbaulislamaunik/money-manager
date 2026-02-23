@@ -1,5 +1,5 @@
 {
-  "name": "pdf-download-app",
+  "name": "money-manager",
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
@@ -48,7 +48,7 @@
     "sequelize-cli": "^6.6.3",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1",
-    "vercel": "^48.4.1"
+    "vercel": "^48.12.1"
   },
   "devDependencies": {
     "concurrently": "^9.2.1",

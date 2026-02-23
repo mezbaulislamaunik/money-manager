@@ -42,7 +42,7 @@ class AttachmentEmailImpl {
             await transporter.sendMail({
                 from: process.env.SENDER_MAIL,
                 to: email.email,
-                subject: 'Your expense upload summary',
+                subject: 'Your entry upload summary',
                 attachments: [{filename: `${userId}_expenses.xlsx`, path: filePath}]
             });
             fs.unlinkSync(filePath);

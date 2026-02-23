@@ -14,7 +14,8 @@ const ApiResponse = require("./models/api-response");
 const browserPool = require('./config/browser-pool');
 const authRoutes = require('./routes/auth-routes');
 const authMiddleware = require('./middlewares/auth-middleware');
-const expenseRoutes = require('./routes/expense-routes');
+const entryRoutes = require('./routes/entry-routes');
+const entryTypeRoutes = require('./routes/entry-type-routes');
 const uploadRoutes = require('./routes/upload-routes');
 
 app.use(express.json());
@@ -29,7 +30,8 @@ app.use((req, res, next) => {
     })
 });
 app.use('/auth', authRoutes);
-app.use('/expense', authMiddleware.verifyToken, expenseRoutes);
+app.use('/entry', authMiddleware.verifyToken, entryRoutes);
+app.use('/entry-type', authMiddleware.verifyToken, entryTypeRoutes);
 app.use('/upload', authMiddleware.verifyToken, uploadRoutes);
 
 setupSwagger(app);
