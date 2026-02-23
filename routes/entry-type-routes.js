@@ -58,7 +58,7 @@ router.post('/manage', entryTypeController.manageEntryType);
  * @swagger
  * /entry-type/list:
  *   get:
- *     summary: Get expense types
+ *     summary: Get entry types
  *     tags: [entry-type-controller]
  *     operationId: expenseType_list
  *     responses:
